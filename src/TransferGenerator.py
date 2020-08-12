@@ -4,8 +4,8 @@ import xml.etree.ElementTree as ET
 
 class Field:
     def __init__(self):
-        self.__field_name: str = ''
-        self.__field_type: str = ''
+        self.__field_name: str = None
+        self.__field_type: str = None
 
     def set_field_name(self, field_name: str) -> 'Field':
         self.__field_name = field_name
@@ -67,7 +67,7 @@ class TransferCreator:
         field_name = field.get_field_name()
         field_type = field.get_field_type()
 
-        return f'        self.__{field_name}: {field_type}\n'
+        return f'        self.__{field_name}: {field_type} = None\n'
 
     def __create_setters(self, transfer_blueprint: TransferBlueprint):
         setter_code = ''
@@ -108,7 +108,7 @@ class TransferCreator:
         return getter_code
 
 
-with open('sample.xml') as transfer_source_file:
+with open('../IN/sample.xml') as transfer_source_file:
     transfer_source_parsed = ET.parse(transfer_source_file)
 
 root = transfer_source_parsed.getroot()
