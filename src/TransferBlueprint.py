@@ -1,17 +1,18 @@
-from typing import List
+from typing import List, TYPE_CHECKING
 
-from Field import Field
+if TYPE_CHECKING:
+    from Field import Field
 
 
 class TransferBlueprint:
     def __init__(self):
         self.__name: str = ''
-        self.__fields: List[Field] = []
+        self.__fields: List['Field'] = []
 
-    def add_field(self, field: Field) -> None:
+    def add_field(self, field: 'Field') -> None:
         self.__fields.append(field)
 
-    def get_fields(self) -> List[Field]:
+    def get_fields(self) -> List['Field']:
         return self.__fields
 
     def set_name(self, name: str) -> None:

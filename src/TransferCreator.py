@@ -1,11 +1,14 @@
-from TransferBlueprint import TransferBlueprint
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from TransferBlueprint import TransferBlueprint
 
 
 class TransferCreator:
     def __init__(self, processors):
         self.__processors = processors
 
-    def create_transfer(self, transfer_blueprint: TransferBlueprint) -> str:
+    def create_transfer(self, transfer_blueprint: 'TransferBlueprint') -> str:
         class_code = ''
 
         for processor in self.__processors:
