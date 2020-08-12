@@ -2,11 +2,11 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from Field import Field
-    from TransferBlueprint import TransferBlueprint
+    from Transfers.TransferBlueprintTransfer import TransferBlueprintTransfer
 
 
 class SetterProcessor:
-    def process(self, transfer_blueprint: 'TransferBlueprint'):
+    def process(self, transfer_blueprint: 'TransferBlueprintTransfer'):
         setter_code = ''
         class_name = transfer_blueprint.get_name()
 

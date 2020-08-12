@@ -1,12 +1,9 @@
 import xml.etree.ElementTree as ET
 
-from ClassDeclarationProcessor import ClassDeclarationProcessor
-from FieldProcessor import FieldProcessor
-from GetterProcessor import GetterProcessor
-from SetterProcessor import SetterProcessor
+from Processors import Processors
 
 from Field import Field
-from TransferBlueprint import TransferBlueprint
+from Transfers.TransferBlueprintTransfer import TransferBlueprintTransfer
 from TransferCreator import TransferCreator
 
 
@@ -17,7 +14,7 @@ root = transfer_source_parsed.getroot()
 print(root.tag)
 print(root.attrib)
 
-transfer_blueprint = TransferBlueprint()
+transfer_blueprint = TransferBlueprintTransfer()
 transfer_blueprint.set_name(root.attrib['name'])
 
 for field_parsed in root:
@@ -30,13 +27,10 @@ for field_parsed in root:
 
     transfer_blueprint.add_field(field)
 
-processors = [
-    ClassDeclarationProcessor(),
-    FieldProcessor(),
-    SetterProcessor(),
-    GetterProcessor(),
-]
-transfer_creator = TransferCreator(processors)
+processors = Processors()
+transfer_creator = TransferCreator(
+    processors.get_processors()
+)
 
 with open('../OUT/SampleTransfer.py', mode='w') as transfer_target_file:
     transfer_target_file.write(transfer_creator.create_transfer(transfer_blueprint))

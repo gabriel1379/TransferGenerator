@@ -1,10 +1,10 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from TransferBlueprint import TransferBlueprint
+    from Transfers.TransferBlueprintTransfer import TransferBlueprintTransfer
 
 
 class ClassDeclarationProcessor:
-    def process(self, transfer_blueprint: 'TransferBlueprint') -> str:
+    def process(self, transfer_blueprint: 'TransferBlueprintTransfer') -> str:
         name = transfer_blueprint.get_name()
         return f'class {name}:\n'

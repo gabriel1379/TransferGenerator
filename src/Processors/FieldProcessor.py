@@ -1,12 +1,12 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from TransferBlueprint import TransferBlueprint
+    from Transfers.TransferBlueprintTransfer import TransferBlueprintTransfer
     from Field import Field
 
 
 class FieldProcessor:
-    def process(self, transfer_blueprint: 'TransferBlueprint') -> str:
+    def process(self, transfer_blueprint: 'TransferBlueprintTransfer') -> str:
         field_code = '    def __init__(self):\n'
 
         for field in transfer_blueprint.get_fields():
