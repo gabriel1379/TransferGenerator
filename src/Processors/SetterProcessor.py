@@ -1,12 +1,12 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from Field import Field
+    from Transfers.FieldTransfer import FieldTransfer
     from Transfers.TransferBlueprintTransfer import TransferBlueprintTransfer
 
 
 class SetterProcessor:
-    def process(self, transfer_blueprint: 'TransferBlueprintTransfer'):
+    def process(self, transfer_blueprint: 'TransferBlueprintTransfer') -> str:
         setter_code = ''
         class_name = transfer_blueprint.get_name()
 
@@ -15,7 +15,7 @@ class SetterProcessor:
 
         return setter_code
 
-    def __create_setter(self, field: 'Field', class_name: str):
+    def __create_setter(self, field: 'FieldTransfer', class_name: str) -> str:
         field_name = field.get_field_name()
         field_type = field.get_field_type()
 

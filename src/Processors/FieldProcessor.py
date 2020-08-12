@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from Transfers.TransferBlueprintTransfer import TransferBlueprintTransfer
-    from Field import Field
+    from Transfers.FieldTransfer import FieldTransfer
 
 
 class FieldProcessor:
@@ -16,7 +16,7 @@ class FieldProcessor:
 
         return field_code
 
-    def __create_field(self, field: 'Field') -> str:
+    def __create_field(self, field: 'FieldTransfer') -> str:
         field_name = field.get_field_name()
         field_type = field.get_field_type()
 

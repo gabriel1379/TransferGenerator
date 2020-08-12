@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 
 from Processors import Processors
 
-from Field import Field
+from Transfers.FieldTransfer import FieldTransfer
 from Transfers.TransferBlueprintTransfer import TransferBlueprintTransfer
 from TransferCreator import TransferCreator
 
@@ -21,7 +21,7 @@ for field_parsed in root:
     field_name = field_parsed.attrib['name']
     field_type = field_parsed.attrib['type']
 
-    field = Field()
+    field = FieldTransfer()
     field.set_field_name(field_name)
     field.set_field_type(field_type)
 
