@@ -38,7 +38,7 @@ processors = [
 ]
 transfer_creator = TransferCreator(processors)
 
-with open('SampleTransfer.py', mode='w') as transfer_target_file:
+with open('../OUT/SampleTransfer.py', mode='w') as transfer_target_file:
     transfer_target_file.write(transfer_creator.create_transfer(transfer_blueprint))
 
 print('Done.')
