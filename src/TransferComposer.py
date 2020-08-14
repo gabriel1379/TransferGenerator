@@ -1,14 +1,14 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from Transfers.TransferBlueprintTransfer import TransferBlueprintTransfer
+    from Transfers.FieldCollectionTransfer import FieldCollectionTransfer
 
 
-class TransferCreator:
+class TransferComposer:
     def __init__(self, processors):
         self.__processors = processors
 
-    def create_transfer(self, transfer_blueprint: 'TransferBlueprintTransfer') -> str:
+    def compose_transfer_code(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
         class_code = ''
 
         for processor in self.__processors:

@@ -4,7 +4,7 @@ if TYPE_CHECKING:
     from Transfers.FieldTransfer import FieldTransfer
 
 
-class TransferBlueprintTransfer:
+class FieldCollectionTransfer:
     def __init__(self):
         self.__name: str = ''
         self.__fields: List['FieldTransfer'] = []
