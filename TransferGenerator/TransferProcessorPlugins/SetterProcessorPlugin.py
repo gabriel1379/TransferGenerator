@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from Transfers.FieldCollectionTransfer import FieldCollectionTransfer
 
 
-class SetterProcessor:
+class SetterProcessorPlugin:
     def process(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
         setter_code = ''
         class_name = transfer_blueprint.get_name()

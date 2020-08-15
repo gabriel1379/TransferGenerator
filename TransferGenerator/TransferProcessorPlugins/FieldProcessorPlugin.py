@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from Transfers.FieldTransfer import FieldTransfer
 
 
-class FieldProcessor:
+class FieldProcessorPlugin:
     def process(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
         field_code = '    def __init__(self):\n'
 
