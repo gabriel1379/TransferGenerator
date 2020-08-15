@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<transfer name="Sample">
-    <field name="test_text" type="str" />
-    <field name="test_number" type="int" />
-</transfer>
+<transfers>
+    <transfer name="SampleFirst">
+        <field name="test_text" type="str" />
+        <field name="test_number" type="int" />
+    </transfer>
+    <transfer name="SampleSecond">
+        <field name="test_bool" type="bool" />
+        <field name="test_list" type="list" />
+    </transfer>
+</transfers>

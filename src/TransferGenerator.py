@@ -14,9 +14,11 @@ from TransferComposer import TransferComposer
 class TransferGenerator:
     def generate_transfers(self):
         xml_root = self.__load_xml_root()
-        field_collection = self.__extract_fields(xml_root)
-        transfer_code = self.__compose_transfer_code(field_collection)
-        self.__write_out_transfer_code(transfer_code)
+
+        for transfer_fields_set in xml_root:
+            field_collection = self.__extract_fields(transfer_fields_set)
+            transfer_code = self.__compose_transfer_code(field_collection)
+            self.__write_out_transfer_code(field_collection.get_name(), transfer_code)
 
         print('Done.')
 
@@ -27,11 +29,11 @@ class TransferGenerator:
 
         return root
 
-    def __extract_fields(self, root: 'Element') -> FieldCollectionTransfer:
-        transfer_blueprint = FieldCollectionTransfer()
-        transfer_blueprint.set_name(root.attrib['name'])
+    def __extract_fields(self, transfer_fields_set: 'Element') -> FieldCollectionTransfer:
+        field_collection = FieldCollectionTransfer()
+        field_collection.set_name(transfer_fields_set.attrib['name'])
 
-        for field_parsed in root:
+        for field_parsed in transfer_fields_set:
             field_name = field_parsed.attrib['name']
             field_type = field_parsed.attrib['type']
 
@@ -39,9 +41,9 @@ class TransferGenerator:
             field.set_field_name(field_name)
             field.set_field_type(field_type)
 
-            transfer_blueprint.add_field(field)
+            field_collection.add_field(field)
 
-        return transfer_blueprint
+        return field_collection
 
     def __create_transfer_creator(self) -> TransferComposer:
         processors = Processors()
@@ -56,8 +58,8 @@ class TransferGenerator:
 
         return transfer_composer.compose_transfer_code(field_collection)
 
-    def __write_out_transfer_code(self, transfer_code: str) -> None:
-        with open('../OUT/SampleTransfer.py', mode='w') as transfer_target_file:
+    def __write_out_transfer_code(self, transfer_name: str, transfer_code: str) -> None:
+        with open(f'../OUT/{transfer_name}.py', mode='w') as transfer_target_file:
             transfer_target_file.write(transfer_code)
 
 
