@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<transfers>
+    <transfer name="SampleThird">
+        <field name="test_alpha" type="str" />
+        <field name="test_beta" type="int" />
+    </transfer>
+    <transfer name="SampleFourth">
+        <field name="test_gamma" type="bool" />
+        <field name="test_delta" type="list" />
+    </transfer>
+</transfers>
