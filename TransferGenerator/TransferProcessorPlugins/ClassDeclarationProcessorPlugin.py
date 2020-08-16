@@ -7,6 +7,6 @@ if TYPE_CHECKING:
 
 
 class ClassDeclarationProcessorPlugin(ProcessorPluginInterface):
-    def process(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
-        name = transfer_blueprint.get_name()
+    def process(self, field_collection: 'FieldCollectionTransfer') -> str:
+        name = field_collection.get_name()
         return f'class {name}:\n'

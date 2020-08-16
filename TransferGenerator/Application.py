@@ -18,11 +18,12 @@ class Application:
         self.__transfer_composer: 'TransferComposer' = transfer_composer
 
     def generate_transfers(self) -> None:
-        xml_root = self.__file_handler.load_xml_root()
+        xml_roots = self.__file_handler.load_xml_roots()
 
-        for transfer_fields_set in xml_root:
-            field_collection = self.__field_extractor.extract_fields(transfer_fields_set)
-            transfer_code = self.__transfer_composer.compose_transfer_code(field_collection)
-            self.__file_handler.write_out_transfer_code(field_collection.get_name(), transfer_code)
+        for xml_root in xml_roots:
+            for transfer_fields_set in xml_root:
+                field_collection = self.__field_extractor.extract_fields(transfer_fields_set)
+                transfer_code = self.__transfer_composer.compose_transfer_code(field_collection)
+                self.__file_handler.write_out_transfer_code(field_collection.get_name(), transfer_code)
 
         print('Done.')
