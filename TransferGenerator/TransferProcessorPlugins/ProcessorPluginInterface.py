@@ -7,5 +7,5 @@ if TYPE_CHECKING:
 
 class ProcessorPluginInterface(ABC):
     @abstractmethod
-    def process(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
+    def process(self, field_collection: 'FieldCollectionTransfer') -> str:
         pass

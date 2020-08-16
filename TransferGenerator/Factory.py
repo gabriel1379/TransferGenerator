@@ -34,11 +34,11 @@ class Factory:
         )
 
     def create_transfer_composer(self) -> TransferComposer:
-        transfer_creator = TransferComposer(
+        transfer_composer = TransferComposer(
             self.__get_transfer_processor_plugins()
         )
 
-        return transfer_creator
+        return transfer_composer
 
     def __get_transfer_processor_plugins(self) -> List['ProcessorPluginInterface']:
         return TransferProcessorPlugins().get_processor_plugins()
