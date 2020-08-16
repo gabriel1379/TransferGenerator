@@ -8,10 +8,10 @@ if TYPE_CHECKING:
 
 
 class GetterProcessorPlugin(ProcessorPluginInterface):
-    def process(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
+    def process(self, field_collection: 'FieldCollectionTransfer') -> str:
         getter_code = ''
 
-        for field in transfer_blueprint.get_fields():
+        for field in field_collection.get_fields():
             getter_code += self.__create_getter(field)
 
         return getter_code

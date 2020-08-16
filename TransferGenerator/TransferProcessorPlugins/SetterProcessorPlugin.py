@@ -8,11 +8,11 @@ if TYPE_CHECKING:
 
 
 class SetterProcessorPlugin(ProcessorPluginInterface):
-    def process(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
+    def process(self, field_collection: 'FieldCollectionTransfer') -> str:
         setter_code = ''
-        class_name = transfer_blueprint.get_name()
+        class_name = field_collection.get_name()
 
-        for field in transfer_blueprint.get_fields():
+        for field in field_collection.get_fields():
             setter_code += self.__create_setter(field, class_name)
 
         return setter_code

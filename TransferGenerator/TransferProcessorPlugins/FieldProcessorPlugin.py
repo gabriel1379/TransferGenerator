@@ -8,10 +8,10 @@ if TYPE_CHECKING:
 
 
 class FieldProcessorPlugin(ProcessorPluginInterface):
-    def process(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
+    def process(self, field_collection: 'FieldCollectionTransfer') -> str:
         field_code = '    def __init__(self):\n'
 
-        for field in transfer_blueprint.get_fields():
+        for field in field_collection.get_fields():
             field_code += self.__create_field(field)
 
         field_code += '\n'
