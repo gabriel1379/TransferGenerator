@@ -1,8 +1,13 @@
+from typing import List, TYPE_CHECKING
+
 from Application import Application
 from FieldExtractor import FieldExtractor
 from FileHandler import FileHandler
 from TransferComposer import TransferComposer
 from TransferProcessorPlugins import TransferProcessorPlugins
+
+if TYPE_CHECKING:
+    from TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
 
 
 class Factory:
@@ -26,5 +31,5 @@ class Factory:
 
         return transfer_creator
 
-    def __get_transfer_processor_plugins(self) -> list:
+    def __get_transfer_processor_plugins(self) -> List['ProcessorPluginInterface']:
         return TransferProcessorPlugins().get_processor_plugins()

@@ -1,11 +1,13 @@
 from typing import TYPE_CHECKING
 
+from TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
+
 if TYPE_CHECKING:
     from Transfers.FieldTransfer import FieldTransfer
     from Transfers.FieldCollectionTransfer import FieldCollectionTransfer
 
 
-class GetterProcessorPlugin:
+class GetterProcessorPlugin(ProcessorPluginInterface):
     def process(self, transfer_blueprint: 'FieldCollectionTransfer') -> str:
         getter_code = ''
 
