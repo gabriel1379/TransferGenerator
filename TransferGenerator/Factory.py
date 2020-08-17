@@ -29,8 +29,9 @@ class Factory:
 
     def create_file_handler(self) -> FileHandler:
         return FileHandler(
-            self.__config.get(ConfigConstants.INPUT_PATH),
-            self.__config.get(ConfigConstants.OUTPUT_PATH)
+            self.__config.get(ConfigConstants.PATH_INPUT),
+            self.__config.get(ConfigConstants.PATH_OUTPUT),
+            self.__config.get(ConfigConstants.NAME_ENDING_TRANSFER_XML)
         )
 
     def create_transfer_composer(self) -> TransferComposer:

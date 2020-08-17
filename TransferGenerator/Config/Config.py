@@ -4,8 +4,9 @@ import Config.ConfigConstants as ConfigConstants
 class Config:
     def __init__(self):
         self.__config: dict = {
-            ConfigConstants.INPUT_PATH: 'IN/',
-            ConfigConstants.OUTPUT_PATH: 'OUT/',
+            ConfigConstants.PATH_INPUT: 'IN/',
+            ConfigConstants.PATH_OUTPUT: 'OUT/',
+            ConfigConstants.NAME_ENDING_TRANSFER_XML: '_transfer'
         }
 
     def get(self, key: str):

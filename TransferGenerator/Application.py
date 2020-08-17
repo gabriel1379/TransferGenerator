@@ -25,5 +25,3 @@ class Application:
                 field_collection = self.__field_extractor.extract_fields(transfer_fields_set)
                 transfer_code = self.__transfer_composer.compose_transfer_code(field_collection)
                 self.__file_handler.write_out_transfer_code(field_collection.get_name(), transfer_code)
-
-        print('Done.')

@@ -7,9 +7,10 @@ if TYPE_CHECKING:
 
 
 class FileHandler:
-    def __init__(self, input_path: str, output_path: str):
-        self.__input_path: Path = Path(input_path)
-        self.__output_path: Path = Path(output_path)
+    def __init__(self, input_path: str, output_path: str, name_ending: str):
+        self.__path_input: Path = Path(input_path)
+        self.__path_output: Path = Path(output_path)
+        self.__name_ending: str = name_ending
 
     def load_xml_roots(self) -> List['Element']:
         xml_source_file_paths = self.__scan_for_xmls()
@@ -23,11 +24,11 @@ class FileHandler:
         return xml_roots
 
     def write_out_transfer_code(self, transfer_name: str, transfer_code: str) -> None:
-        with open(self.__output_path.joinpath(f'{transfer_name}.py'), mode='w') as transfer_target_file:
+        with open(self.__path_output.joinpath(f'{transfer_name}.py'), mode='w') as transfer_target_file:
             transfer_target_file.write(transfer_code)
 
     def __scan_for_xmls(self) -> List[Path]:
-        return sorted(self.__input_path.glob('**/*_transfers.xml'))
+        return sorted(self.__path_input.glob(f'**/*{self.__name_ending}.xml'))
 
     def __load_xml_root(self, input_path: Path) -> 'Element':
         with open(input_path) as transfer_source_file:
