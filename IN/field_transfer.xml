@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<transfers>
+    <transfer name="FieldTransfer">
+        <field name="name_field" type="str" />
+        <field name="type_field" type="str" />
+    </transfer>
+    <transfer name="FieldCollectionTransfer">
+        <field name="name_collection" type="str" />
+        <field name="fields" type="List['FieldTransfer']" />
+    </transfer>
+</transfers>
