@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 
+from src.TransferProcessorPlugins.TransferProcessorConstants import NAME_META_FIELD_MODIFIED
 from src.TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
 
 if TYPE_CHECKING:
@@ -13,6 +14,9 @@ class SetterProcessorPlugin(ProcessorPluginInterface):
         class_name = field_collection.get_name()
 
         for field in field_collection.get_fields():
+            if field.get_field_name() == NAME_META_FIELD_MODIFIED:
+                continue
+
             setter_code += self.__create_setter(field, class_name)
 
         return setter_code
@@ -23,6 +27,8 @@ class SetterProcessorPlugin(ProcessorPluginInterface):
 
         setter_code = (f'    def set_{field_name}(self, {field_name}: {field_type}) -> \'{class_name}\':\n'
                        f'        self.__{field_name} = {field_name}\n'
+                       f'        self.__modified[\'{field_name}\'] = True\n'
+                       f'\n'
                        f'        return self\n'
                        f'\n')
 

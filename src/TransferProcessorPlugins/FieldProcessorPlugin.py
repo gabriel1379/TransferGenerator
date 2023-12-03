@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 
+from src.TransferProcessorPlugins.TransferProcessorConstants import NAME_META_FIELD_MODIFIED
 from src.TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
 
 if TYPE_CHECKING:
@@ -21,5 +22,9 @@ class FieldProcessorPlugin(ProcessorPluginInterface):
     def __create_field(self, field: 'FieldTransfer') -> str:
         field_name = field.get_field_name()
         field_type = field.get_field_type()
+        initial_value = 'None'
 
-        return f'        self.__{field_name}: {field_type} = None\n'
+        if field_name == NAME_META_FIELD_MODIFIED:
+            initial_value = '{}'
+
+        return f'        self.__{field_name}: {field_type} = {initial_value}\n'
