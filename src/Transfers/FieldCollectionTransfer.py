@@ -1,7 +1,7 @@
 from typing import List, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from Transfers.FieldTransfer import FieldTransfer
+    from src.Transfers.FieldTransfer import FieldTransfer
 
 
 class FieldCollectionTransfer:

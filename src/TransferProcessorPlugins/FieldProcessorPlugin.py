@@ -1,10 +1,10 @@
 from typing import TYPE_CHECKING
 
-from TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
+from src.TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
 
 if TYPE_CHECKING:
-    from Transfers.FieldCollectionTransfer import FieldCollectionTransfer
-    from Transfers.FieldTransfer import FieldTransfer
+    from src.Transfers.FieldCollectionTransfer import FieldCollectionTransfer
+    from src.Transfers.FieldTransfer import FieldTransfer
 
 
 class FieldProcessorPlugin(ProcessorPluginInterface):

@@ -1,5 +1,5 @@
-from Config.Config import Config
-from Factory import Factory
+from src.Config.Config import Config
+from src.Factory import Factory
 
 
 class TransferGenerator:

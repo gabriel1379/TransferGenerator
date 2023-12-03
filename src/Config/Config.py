@@ -1,4 +1,4 @@
-import Config.ConfigConstants as ConfigConstants
+import src.Config.ConfigConstants as ConfigConstants
 
 
 class Config:

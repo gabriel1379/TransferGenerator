@@ -23,6 +23,8 @@ class FileHandler:
         return xml_roots
 
     def write_out_transfer_code(self, transfer_name: str, transfer_code: str) -> None:
+        self.__output_path.mkdir(parents=True, exist_ok=True)
+
         with open(self.__output_path.joinpath(f'{transfer_name}.py'), mode='w') as transfer_target_file:
             transfer_target_file.write(transfer_code)
 
