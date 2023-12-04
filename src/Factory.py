@@ -5,7 +5,6 @@ import src.Config.ConfigConstants as ConfigConstants
 from src.Application import Application
 from src.FieldExtractor import FieldExtractor
 from src.FileHandler import FileHandler
-from src.MetaFieldAdder import MetaFieldAdder
 from src.TransferComposer import TransferComposer
 from src.TransferProcessorPlugins.ClassDeclarationProcessorPlugin import ClassDeclarationProcessorPlugin
 from src.TransferProcessorPlugins.FieldProcessorPlugin import FieldProcessorPlugin
@@ -26,7 +25,6 @@ class Factory:
         return Application(
             self.create_field_extractor(),
             self.create_file_handler(),
-            self.create_meta_field_adder(),
             self.create_transfer_composer()
         )
 
@@ -38,9 +36,6 @@ class Factory:
             self.__config.get(ConfigConstants.INPUT_PATH),
             self.__config.get(ConfigConstants.OUTPUT_PATH)
         )
-
-    def create_meta_field_adder(self) -> MetaFieldAdder:
-        return MetaFieldAdder()
 
     def create_transfer_composer(self) -> TransferComposer:
         transfer_composer = TransferComposer(

@@ -15,6 +15,8 @@ class FieldProcessorPlugin(ProcessorPluginInterface):
         for field in field_collection.get_fields():
             field_code += self.__create_field(field)
 
+        field_code += self.__create_modified_meta_field(field_collection)
+
         field_code += '\n'
 
         return field_code
@@ -22,9 +24,16 @@ class FieldProcessorPlugin(ProcessorPluginInterface):
     def __create_field(self, field: 'FieldTransfer') -> str:
         field_name = field.get_field_name()
         field_type = field.get_field_type()
-        initial_value = 'None'
 
-        if field_name == NAME_META_FIELD_MODIFIED:
-            initial_value = '{}'
+        return f'        self.__{field_name}: {field_type} = None\n'
 
-        return f'        self.__{field_name}: {field_type} = {initial_value}\n'
+    def __create_modified_meta_field(self, field_collection: 'FieldCollectionTransfer') -> str:
+        dict_code = f'        self.__{NAME_META_FIELD_MODIFIED}: dict = '
+        dict_code += '{\n'
+
+        for field in field_collection.get_fields():
+            dict_code += f'            \'{field.get_field_name()}\': False,\n'
+
+        dict_code += '        }\n'
+
+        return dict_code

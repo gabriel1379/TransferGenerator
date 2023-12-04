@@ -2,6 +2,8 @@ from pathlib import Path
 from typing import List, TYPE_CHECKING
 from xml.etree import ElementTree as ET
 
+from src.TransferProcessorPlugins.TransferProcessorConstants import NAME_TRANSFER_CLASS_SUFFIX
+
 if TYPE_CHECKING:
     from xml.etree.ElementTree import Element
 
@@ -25,7 +27,8 @@ class FileHandler:
     def write_out_transfer_code(self, transfer_name: str, transfer_code: str) -> None:
         self.__output_path.mkdir(parents=True, exist_ok=True)
 
-        with open(self.__output_path.joinpath(f'{transfer_name}.py'), mode='w') as transfer_target_file:
+        name_transfer_file = f'{transfer_name}{NAME_TRANSFER_CLASS_SUFFIX}.py'
+        with open(self.__output_path.joinpath(name_transfer_file), mode='w') as transfer_target_file:
             transfer_target_file.write(transfer_code)
 
     def __scan_for_xmls(self) -> List[Path]:

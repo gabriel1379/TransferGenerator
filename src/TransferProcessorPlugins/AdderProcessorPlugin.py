@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 
 from src.TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
+from src.TransferProcessorPlugins.TransferProcessorConstants import NAME_TRANSFER_CLASS_SUFFIX
 
 if TYPE_CHECKING:
     from src.Transfers.FieldTransfer import FieldTransfer
@@ -10,7 +11,7 @@ if TYPE_CHECKING:
 class AdderProcessorPlugin(ProcessorPluginInterface):
     def process(self, field_collection: 'FieldCollectionTransfer') -> str:
         adder_code = ''
-        class_name = field_collection.get_name()
+        class_name = field_collection.get_name() + NAME_TRANSFER_CLASS_SUFFIX
 
         for field in field_collection.get_fields():
             if field.get_field_type() == 'dict':
