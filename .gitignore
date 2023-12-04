@@ -1,8 +1,8 @@
 .idea/
 venv/
 
+/IN/
+!/IN/*sample_transfers.xml
 /OUT/
 
 __pycache__/
-
-/src/SampleTransfer.py
