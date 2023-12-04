@@ -1,16 +1,17 @@
 from typing import List, TYPE_CHECKING
 
-import src.Config.ConfigConstants as ConfigConstants
-
 from src.Application import Application
+from src.Config.ConfigConstants import INPUT_PATH, OUTPUT_PATH
 from src.FieldExtractor import FieldExtractor
 from src.FileHandler import FileHandler
 from src.TransferComposer import TransferComposer
+from src.TransferProcessorPlugins.AdderProcessorPlugin import AdderProcessorPlugin
 from src.TransferProcessorPlugins.ClassDeclarationProcessorPlugin import ClassDeclarationProcessorPlugin
 from src.TransferProcessorPlugins.FieldProcessorPlugin import FieldProcessorPlugin
 from src.TransferProcessorPlugins.GetterProcessorPlugin import GetterProcessorPlugin
+from src.TransferProcessorPlugins.InfoHeaderProcessorPlugin import InfoHeaderProcessorPlugin
+from src.TransferProcessorPlugins.IsModifiedProcessorPlugin import IsModifiedProcessorPlugin
 from src.TransferProcessorPlugins.SetterProcessorPlugin import SetterProcessorPlugin
-from src.TransferProcessorPlugins.AdderProcessorPlugin import AdderProcessorPlugin
 
 if TYPE_CHECKING:
     from src.Config.Config import Config
@@ -33,8 +34,8 @@ class Factory:
 
     def create_file_handler(self) -> FileHandler:
         return FileHandler(
-            self.__config.get(ConfigConstants.INPUT_PATH),
-            self.__config.get(ConfigConstants.OUTPUT_PATH)
+            self.__config.get(INPUT_PATH),
+            self.__config.get(OUTPUT_PATH)
         )
 
     def create_transfer_composer(self) -> TransferComposer:
@@ -46,9 +47,11 @@ class Factory:
 
     def __get_transfer_processor_plugins(self) -> List['ProcessorPluginInterface']:
         return [
+            InfoHeaderProcessorPlugin(),
             ClassDeclarationProcessorPlugin(),
             FieldProcessorPlugin(),
             SetterProcessorPlugin(),
             GetterProcessorPlugin(),
             AdderProcessorPlugin(),
+            IsModifiedProcessorPlugin(),
         ]

@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from src.TransferProcessorPlugins.TransferProcessorConstants import NAME_META_FIELD_MODIFIED
+from src.TransferProcessorPlugins.TransferProcessorConstants import META_FIELD_MODIFIED_NAME, META_FIELD_MODIFIED_TYPE
 from src.TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
 
 if TYPE_CHECKING:
@@ -28,7 +28,7 @@ class FieldProcessorPlugin(ProcessorPluginInterface):
         return f'        self.__{field_name}: {field_type} = None\n'
 
     def __create_modified_meta_field(self, field_collection: 'FieldCollectionTransfer') -> str:
-        dict_code = f'        self.__{NAME_META_FIELD_MODIFIED}: dict = '
+        dict_code = f'        self.__{META_FIELD_MODIFIED_NAME}: {META_FIELD_MODIFIED_TYPE} = '
         dict_code += '{\n'
 
         for field in field_collection.get_fields():

@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from src.TransferProcessorPlugins.TransferProcessorConstants import NAME_META_FIELD_MODIFIED, NAME_TRANSFER_CLASS_SUFFIX
+from src.TransferProcessorPlugins.TransferProcessorConstants import META_FIELD_MODIFIED_NAME, NAME_TRANSFER_CLASS_SUFFIX
 from src.TransferProcessorPlugins.ProcessorPluginInterface import ProcessorPluginInterface
 
 if TYPE_CHECKING:
@@ -14,7 +14,7 @@ class SetterProcessorPlugin(ProcessorPluginInterface):
         class_name = field_collection.get_name() + NAME_TRANSFER_CLASS_SUFFIX
 
         for field in field_collection.get_fields():
-            if field.get_field_name() == NAME_META_FIELD_MODIFIED:
+            if field.get_field_name() == META_FIELD_MODIFIED_NAME:
                 continue
 
             setter_code += self.__create_setter(field, class_name)
