@@ -1,7 +1,8 @@
+from argparse import ArgumentParser
 from typing import List, TYPE_CHECKING
 
 from src.Application import Application
-from src.Config.ConfigConstants import INPUT_PATH, OUTPUT_PATH
+from src.ArgumentHandler import ArgumentHandler
 from src.FieldExtractor import FieldExtractor
 from src.FileHandler import FileHandler
 from src.TransferComposer import TransferComposer
@@ -24,19 +25,23 @@ class Factory:
 
     def create_application(self):
         return Application(
+            self.create_arg_handler(),
             self.create_field_extractor(),
             self.create_file_handler(),
             self.create_transfer_composer()
         )
 
+    def create_arg_handler(self) -> ArgumentHandler:
+        return ArgumentHandler(self.create_arg_parser())
+
+    def create_arg_parser(self) -> ArgumentParser:
+        return ArgumentParser()
+
     def create_field_extractor(self) -> FieldExtractor:
         return FieldExtractor()
 
     def create_file_handler(self) -> FileHandler:
-        return FileHandler(
-            self.__config.get(INPUT_PATH),
-            self.__config.get(OUTPUT_PATH)
-        )
+        return FileHandler(self.__config)
 
     def create_transfer_composer(self) -> TransferComposer:
         transfer_composer = TransferComposer(

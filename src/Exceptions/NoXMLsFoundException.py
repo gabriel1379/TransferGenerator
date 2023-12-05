@@ -1,0 +1,2 @@
+class NoXMLsFoundException(Exception):
+    pass

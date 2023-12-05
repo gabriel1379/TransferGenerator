@@ -1,13 +1,16 @@
-import src.Config.ConfigConstants as ConfigConstants
+from src.Config.Exceptions.ConfigKeyNotFoundException import ConfigKeyNotFoundException
+import src.FileHandlerConstants as FileHandlerConstants
 
 
 class Config:
     def __init__(self):
         self.__config: dict = {
-            ConfigConstants.INPUT_PATH: 'IN/',
-            ConfigConstants.OUTPUT_PATH: 'OUT/',
+            FileHandlerConstants.INPUT_PATH_DEFAULT: 'IN/',
+            FileHandlerConstants.OUTPUT_PATH_DEFAULT: 'OUT/',
         }
 
     def get(self, key: str):
-        if key in self.__config:
-            return self.__config[key]
+        if key not in self.__config:
+            raise ConfigKeyNotFoundException
+
+        return self.__config[key]
