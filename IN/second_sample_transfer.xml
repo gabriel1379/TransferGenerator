@@ -8,4 +8,13 @@
         <field name="test_gamma" type="bool" />
         <field name="test_delta" type="list" />
     </transfer>
+    <transfer name="TypingTypes">
+        <field name="test_iota" type="List[str]" />
+        <field name="test_kappa" type="Dict[str]" />
+        <field name="test_lambda" type="Dict" />
+    </transfer>
+    <transfer name="OtherTypes">
+        <field name="test_psi" type="MyOwnClass" />
+        <field name="test_epsilon" type="SomeOtherClass" />
+    </transfer>
 </transfers>

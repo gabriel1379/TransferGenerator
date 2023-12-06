@@ -13,6 +13,7 @@ from src.TransferProcessorPlugins.GetterProcessorPlugin import GetterProcessorPl
 from src.TransferProcessorPlugins.InfoHeaderProcessorPlugin import InfoHeaderProcessorPlugin
 from src.TransferProcessorPlugins.IsModifiedProcessorPlugin import IsModifiedProcessorPlugin
 from src.TransferProcessorPlugins.SetterProcessorPlugin import SetterProcessorPlugin
+from src.TransferProcessorPlugins.TypeImportProcessorPlugin import TypeImportProcessorPlugin
 
 if TYPE_CHECKING:
     from src.Config.Config import Config
@@ -53,6 +54,7 @@ class Factory:
     def __get_transfer_processor_plugins(self) -> List['ProcessorPluginInterface']:
         return [
             InfoHeaderProcessorPlugin(),
+            TypeImportProcessorPlugin(),
             ClassDeclarationProcessorPlugin(),
             FieldProcessorPlugin(),
             SetterProcessorPlugin(),
