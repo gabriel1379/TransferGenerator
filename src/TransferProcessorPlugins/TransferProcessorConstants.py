@@ -1,0 +1,3 @@
+META_FIELD_MODIFIED_NAME = 'modified'
+META_FIELD_MODIFIED_TYPE = 'dict[str, bool]'
+NAME_TRANSFER_CLASS_SUFFIX = 'Transfer'

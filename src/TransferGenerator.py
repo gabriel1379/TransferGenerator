@@ -1,5 +1,5 @@
-from Config.Config import Config
-from Factory import Factory
+from src.Config.Config import Config
+from src.Factory import Factory
 
 
 class TransferGenerator:
@@ -22,4 +22,7 @@ class TransferGenerator:
         self.__factory = Factory(self.__config)
 
     def __is_booted(self) -> bool:
-        return self.__factory is not None
+        return (
+                self.__factory is not None and
+                self.__config is not None
+                )

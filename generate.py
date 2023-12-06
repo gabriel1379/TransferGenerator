@@ -1,4 +1,4 @@
-from TransferGenerator import TransferGenerator
+from src.TransferGenerator import TransferGenerator
 
 
 transfer_generator = TransferGenerator()

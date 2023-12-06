@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
-from Transfers.FieldCollectionTransfer import FieldCollectionTransfer
-from Transfers.FieldTransfer import FieldTransfer
+from src.Transfers.FieldCollectionTransfer import FieldCollectionTransfer
+from src.Transfers.FieldTransfer import FieldTransfer
 
 if TYPE_CHECKING:
     from xml.etree.ElementTree import Element
